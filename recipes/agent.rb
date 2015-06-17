@@ -23,7 +23,7 @@ include_recipe 'zabbix_ng::repository'
 package 'zabbix-agent'
 
 service 'zabbix-agent' do
-  action :enable
+  action [:enable, :start]
 end
 
 template '/etc/zabbix/zabbix_agentd.conf' do
