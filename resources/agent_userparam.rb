@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: zabbix_ng
-# Recipe:: default
+# Resource:: agent_userparam
 #
 # Copyright (C) 2015 Chris Aumann
 #
@@ -18,4 +18,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-include_recipe 'zabbix_ng::agent'
+actions        :create, :delete
+default_action :create
+
+attribute :name,       kind_of: String, name_attribute: true
+attribute :identifier, kind_of: String, default: nil
+attribute :command,    kind_of: String, default: nil
+attribute :cookbook,   kind_of: String, default: 'zabbix_ng'
+attribute :source,     kind_of: String, default: 'agent/userparam.conf.erb'
+attribute :variables,  kind_of: Hash,   default: nil

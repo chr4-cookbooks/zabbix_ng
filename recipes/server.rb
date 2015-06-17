@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: zabbix_ng
-# Recipe:: default
+# Recipe:: server
 #
 # Copyright (C) 2015 Chris Aumann
 #
@@ -18,4 +18,23 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-include_recipe 'zabbix_ng::agent'
+include_recipe 'zabbix_ng::repository'
+
+package 'zabbix-server-pgsql'
+package 'zabbix-frontend-php'
+
+service 'zabbix-server' do
+  action :enable
+end
+
+template '/etc/zabbix/zabbix_server.conf' do
+  mode     00644
+  source   'server/zabbix_server.conf.erb'
+  variables logfile: '/var/log/zabbix/zabbix_server.log',
+            pidfile: '/var/run/zabbix/zabbix_server.pid',
+            db_host: '/var/run/postgresql',
+            db_name: 'zabbix',
+            db_user: 'zabbix'
+
+  notifies  :restart, 'service[zabbix-server]'
+end

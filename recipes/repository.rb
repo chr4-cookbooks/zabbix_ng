@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: zabbix_ng
-# Recipe:: default
+# Recipe:: repository
 #
 # Copyright (C) 2015 Chris Aumann
 #
@@ -18,4 +18,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-include_recipe 'zabbix_ng::agent'
+# Official Zabbix repository
+apt_repository 'zabbix' do
+  uri 'http://repo.zabbix.com/zabbix/2.4/ubuntu'
+  distribution node['lsb']['codename']
+  components %w(main)
+  key 'http://repo.zabbix.com/zabbix-official-repo.key'
+end

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: zabbix_ng
-# Recipe:: default
+# Attributes:: default
 #
 # Copyright (C) 2015 Chris Aumann
 #
@@ -18,4 +18,4 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-include_recipe 'zabbix_ng::agent'
+default['zabbix_ng']['zabbix_server'] = '127.0.0.1'
