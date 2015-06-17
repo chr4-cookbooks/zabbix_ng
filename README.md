@@ -27,6 +27,10 @@ yum.updates # for scientific, redhat, centos and fedora
 
 Installs zabbix-server
 
+## sender
+
+Installs zabbix-sender
+
 # Providers
 
 To use the providers, make sure you add the following line to your metadata.rb
