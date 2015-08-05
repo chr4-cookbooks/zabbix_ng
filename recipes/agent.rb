@@ -25,7 +25,8 @@ package 'zabbix-agent'
 template '/etc/zabbix/zabbix_agentd.conf' do
   mode      00644
   source    'agent/zabbix_agentd.conf.erb'
-  variables zabbix_server: node['zabbix_ng']['zabbix_server']
+  variables zabbix_server: node['zabbix_ng']['zabbix_server'],
+            timeout: node['zabbix_ng']['zabbix_agent']['timeout']
 end
 
 # Include package manager specific update checks
