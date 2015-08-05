@@ -22,15 +22,10 @@ include_recipe 'zabbix_ng::repository'
 
 package 'zabbix-agent'
 
-service 'zabbix-agent' do
-  action [:enable, :start]
-end
-
 template '/etc/zabbix/zabbix_agentd.conf' do
   mode      00644
   source    'agent/zabbix_agentd.conf.erb'
   variables zabbix_server: node['zabbix_ng']['zabbix_server']
-  notifies  :restart, 'service[zabbix-agent]'
 end
 
 # Include package manager specific update checks
@@ -45,7 +40,6 @@ when 'debian'
     mode     00644
     cookbook 'zabbix_ng'
     source   'agent/apt.conf.erb'
-    notifies :restart, 'service[zabbix-agent]'
   end
 
 when 'rhel', 'fedora'
@@ -56,6 +50,19 @@ when 'rhel', 'fedora'
     mode     00644
     cookbook 'zabbix_ng'
     source   'agent/yum.conf.erb'
-    notifies :restart, 'service[zabbix-agent]'
   end
 end
+
+service 'zabbix-agent' do
+  case node['platform_family']
+  when 'debian'
+    subscribes :restart, 'template[/etc/zabbix/zabbix_agentd.d/yum.conf]'
+  when 'rhel', 'fedora'
+    subscribes :restart, 'template[/etc/zabbix/zabbix_agentd.d/apt.conf]'
+  end
+
+  subscribes :restart, 'template[/etc/zabbix/zabbix_agentd.conf'
+
+  action [:enable, :start]
+end
+
