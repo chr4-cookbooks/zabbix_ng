@@ -19,4 +19,4 @@
 #
 
 default['zabbix_ng']['zabbix_server'] = '127.0.0.1'
-default['zabbix_ng']['zabbix_version'] = '2.4'
+default['zabbix_ng']['zabbix_version'] = '3.0'
