@@ -1,3 +1,10 @@
+# 1.0.0
+
+- Introduce new parameter `node['zabbix_ng']['zabbix_version']`
+- Update default zabbix version to `3.0`
+- NOTE: In case you want to stay with zabbix-2.4, make sure to set the following attribute:
+  `default['zabbix_ng']['zabbix_version'] = '2.4'`
+
 # 0.1.1
 
 - Restart zabbix agent after config file was deployed
