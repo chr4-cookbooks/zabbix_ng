@@ -24,3 +24,13 @@ SenderFrequency=30
 CacheSize=32M
 Timeout=30
 UnreachablePeriod=300
+
+# Manually set fping path, Ubuntu doesn't place them in /usr/sbin
+FpingLocation=/usr/bin/fping
+Fping6Location=/usr/bin/fping6
+
+# Other default settings for Ubuntu
+LogFileSize=0
+AlertScriptsPath=/usr/lib/zabbix/alertscripts
+ExternalScripts=/usr/lib/zabbix/externalscripts
+LogSlowQueries=3000
