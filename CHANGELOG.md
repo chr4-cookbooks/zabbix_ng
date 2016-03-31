@@ -1,3 +1,7 @@
+# 1.0.1
+
+- Use `node['fqdn']` as the default hostname in `zabbix_agentd.conf`. This resolves issues with zabbix-trapper when using `zabbix_sender`
+
 # 1.0.0
 
 - Introduce new parameter `node['zabbix_ng']['zabbix_version']`
