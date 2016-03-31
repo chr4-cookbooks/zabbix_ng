@@ -134,7 +134,7 @@ ServerActive=<%= @zabbix_server %>
 # Default:
 # Hostname=
 
-Hostname=<%= node.name %>
+Hostname=<%= node['fqdn'] %>
 
 ### Option: HostnameItem
 #	Item used for generating Hostname if it is undefined. Ignored if Hostname is defined.
