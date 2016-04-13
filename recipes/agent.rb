@@ -62,7 +62,7 @@ service 'zabbix-agent' do
     subscribes :restart, 'template[/etc/zabbix/zabbix_agentd.d/apt.conf]'
   end
 
-  subscribes :restart, 'template[/etc/zabbix/zabbix_agentd.conf'
+  subscribes :restart, 'template[/etc/zabbix/zabbix_agentd.conf]'
 
   action [:enable, :start]
 end
