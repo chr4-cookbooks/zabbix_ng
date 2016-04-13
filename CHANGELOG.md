@@ -1,3 +1,7 @@
+# 1.0.2
+
+- Fix issue with automatically restarting `zabbix-agent` when config file was changed.
+
 # 1.0.1
 
 - Use `node['fqdn']` as the default hostname in `zabbix_agentd.conf`. This resolves issues with zabbix-trapper when using `zabbix_sender`
