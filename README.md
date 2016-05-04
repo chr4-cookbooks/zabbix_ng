@@ -56,7 +56,7 @@ You can also use your own templates
 
 ```ruby
 zabbix_ng_agent_userparam 'postgresql' do
-  cookbook 'flinc-database'
+  cookbook 'my_cookbook'
   source   'zabbix_parameters_postgresql.erb'
   variables :my => 'var'
 end
