@@ -21,7 +21,7 @@
 # Official Zabbix repository
 apt_repository 'zabbix' do
   uri "http://repo.zabbix.com/zabbix/#{node['zabbix_ng']['zabbix_version']}/ubuntu"
-  distribution node['lsb']['codename']
+  distribution 'trusty' # Only trusty is supported as of Jun 2016, should work on other systems though
   components %w(main)
   key 'http://repo.zabbix.com/zabbix-official-repo.key'
 end
