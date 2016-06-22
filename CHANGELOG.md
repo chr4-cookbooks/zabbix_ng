@@ -1,3 +1,8 @@
+# 1.0.3
+
+- Force repository distribution to `trusty`, as no other distribution is supported as of Jun 2016.
+  Packages seem to work fine in `xenial`, too.
+
 # 1.0.2
 
 - Fix issue with automatically restarting `zabbix-agent` when config file was changed.
