@@ -66,4 +66,3 @@ service 'zabbix-agent' do
 
   action [:enable, :start]
 end
-
