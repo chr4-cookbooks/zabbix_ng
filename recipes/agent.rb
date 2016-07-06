@@ -31,6 +31,16 @@ directory '/etc/zabbix/zabbix_agentd.d' do
   mode 00755
 end
 
+# The same for the logfile directory
+directory '/var/log/zabbix-agent' do
+  action :delete
+end
+directory '/var/log/zabbix' do
+  user 'zabbix'
+  group 'zabbix'
+  mode 00755
+end
+
 template '/etc/zabbix/zabbix_agentd.conf' do
   mode      00644
   source    'agent/zabbix_agentd.conf.erb'
