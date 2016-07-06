@@ -24,4 +24,7 @@ apt_repository 'zabbix' do
   distribution 'trusty' # Only trusty is supported as of Jun 2016, should work on other systems though
   components %w(main)
   key 'http://repo.zabbix.com/zabbix-official-repo.key'
+
+  # Packages are not available for the arm architecture
+  not_if { node['kernel']['machine'] =~ /^arm/ }
 end
