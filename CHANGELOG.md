@@ -1,3 +1,9 @@
+# 1.1.0
+
+- Do not add PPA on ARM architecture
+- Add compatibility to Ubuntu packages
+- Add attributes for `zabbix-agent` pidfile and logfile
+
 # 1.0.3
 
 - Force repository distribution to `trusty`, as no other distribution is supported as of Jun 2016.
