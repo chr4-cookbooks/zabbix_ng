@@ -22,6 +22,15 @@ include_recipe 'zabbix_ng::repository'
 
 package 'zabbix-agent'
 
+# Remove zabbix-agentd.conf.d directory, used by the Ubuntu package.
+# Create zabbix-agend.d instead, which is the directory used by the official Zabbix PPA.
+directory '/etc/zabbix/zabbix_agentd.conf.d' do
+  action :delete
+end
+directory '/etc/zabbix/zabbix_agentd.d' do
+  mode 00755
+end
+
 template '/etc/zabbix/zabbix_agentd.conf' do
   mode      00644
   source    'agent/zabbix_agentd.conf.erb'
